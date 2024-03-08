@@ -1,4 +1,5 @@
-import todo_all from "./array.js"
+import { todo_all } from "./array";
+import sortTodo from "./sortTodo";
 
 class Todo {
     constructor(title, description, dueDate, priority) {
@@ -22,6 +23,7 @@ class Todo {
 function createTodo(title, description, dueDate, priority) {
     let newTodo = new Todo(title, description, dueDate, priority);
     todo_all.push(newTodo);
+    sortTodo();
 };
 
 export default createTodo;
