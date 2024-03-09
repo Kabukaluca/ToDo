@@ -16,6 +16,9 @@ const priority_high = [];
 const priority_medium = [];
 const priority_low = [];
 
+// --- Status --- //
+const complete = [];
+const uncomplete = [];
 
 // export default todo_all;
-export { todo_all, priority_high, priority_medium, priority_low };
+export { todo_all, priority_high, priority_medium, priority_low, complete, uncomplete };

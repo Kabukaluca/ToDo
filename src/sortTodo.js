@@ -1,4 +1,4 @@
-import { todo_all, priority_high, priority_medium, priority_low } from "./array";
+import { todo_all, priority_high, priority_medium, priority_low, complete, uncomplete } from "./array";
 import clearArrays from "./clearArrays";
 
 const sortTodo = () => {
@@ -6,19 +6,24 @@ const sortTodo = () => {
 
     function sort(todo, index) {
         const priority = todo.priority;
+        const todoStatus = todo.status;
 
         if (priority === "high") {
             priority_high.push(todo);
-            console.log(index)
         };
 
         if (priority === "medium") {
             priority_medium.push(todo);
-            console.log(index)
         };
 
         if (priority === "low") {
             priority_low.push(todo);
+        };
+
+        if (todoStatus === "complete") {
+            complete.push(todo);
+        } else {
+            uncomplete.push(todo);
         };
     };
     todo_all.forEach(sort);
