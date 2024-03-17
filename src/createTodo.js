@@ -1,5 +1,6 @@
-import { todo_all } from "./array";
-import sortTodo from "./sortTodo";
+import { todo_all } from "./index.js";
+import { filterTodos } from "./filterArrays";
+export default createTodo;
 
 class Todo {
     constructor(title, description, dueDate, priority, status) {
@@ -9,7 +10,6 @@ class Todo {
         this.priority = priority;
         this.status = status;
     }
-
     createData() {
         let data = {
             Title: this.title,
@@ -22,10 +22,8 @@ class Todo {
     };
 };
 
-function createTodo(title, description, dueDate, priority) {
-    let newTodo = new Todo(title, description, dueDate, priority);
+function createTodo(title, description, dueDate, priority, todoStatus) {
+    let newTodo = new Todo(title, description, dueDate, priority, todoStatus);
     todo_all.push(newTodo);
-    sortTodo();
+    filterTodos();
 };
-
-export default createTodo;
