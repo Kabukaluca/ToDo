@@ -1,16 +1,21 @@
-import { todo_all, priority_high, priority_medium, priority_low, complete, uncomplete } from "./array";
 import createTodo from "./createTodo";
+import { filteredTasks } from "./filterArrays";
+export { todo_all };
+import TodoManger from "./todoManager";
+// const todoManger = new TodoManger();
 
-function newTodo(a, b, c, d) {
-    createTodo(a, b, c, d)
+const todo_all = [];
+
+function newTodo(a, b, c, d, e) {
+    createTodo(a, b, c, d, e)
 };
 
-/* Query Selector 
-const addTodoBtn = document.getElementById("add-todo-btn");
-addTodoBtn.addEventListener("click", () => {   });
-*/
+newTodo("Low Todo", "This should create a low prio todo", "1.1.23", "low", "complete")
+newTodo("Medium Todo", "This should create a medium prio todo", "13.13.23", "medium", "incomplete")
+newTodo("The Odin Project", "Finish the Odin Project to learn code", "31.12.2024", "high", "incomplete");
 
-newTodo("Low", "test", "test", "medium", "complete")
-newTodo("Medium", "Test", "13.13", "medium", "uncomplete")
-newTodo("The Odin Project", "Finish the Odin Project to learn code", "31.12.2024", "high", "uncomplete");
-console.log(todo_all, priority_high, priority_medium, priority_low, complete, uncomplete);
+console.log(
+    todo_all,
+    filteredTasks,
+    // filteredTasks.highPriorityTasks,
+);
