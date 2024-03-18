@@ -1,10 +1,8 @@
 import createTodo from "./createTodo";
+import todoManager from "./todoManager";
 import { filteredTasks } from "./filterArrays";
-export { todo_all };
-import TodoManger from "./todoManager";
-// const todoManger = new TodoManger();
-
-const todo_all = [];
+// const todo_all = [];
+// export { todo_all };
 
 function newTodo(a, b, c, d, e) {
     createTodo(a, b, c, d, e)
@@ -15,7 +13,7 @@ newTodo("Medium Todo", "This should create a medium prio todo", "13.13.23", "med
 newTodo("The Odin Project", "Finish the Odin Project to learn code", "31.12.2024", "high", "incomplete");
 
 console.log(
-    todo_all,
+    todoManager.todoList,
     filteredTasks,
     // filteredTasks.highPriorityTasks,
 );

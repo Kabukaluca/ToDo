@@ -1,18 +1,20 @@
-import { todo_all } from "./index.js";
-export { filterTodos, filteredTasks };
-
+// import { todo_all } from "./index.js";
+import todoManager from "./todoManager.js";
 
 let filteredTasks = [];
 
 const filters = {
     filterByDueDate: (dueDate) => {
-        return todo_all.filter(todo => todo.dueDate === dueDate);
+        return todoManager.todoList.filter(todo => todo.dueDate === dueDate);
+        // return todo_all.filter(todo => todo.dueDate === dueDate);
     },
     filterByPriority: (priority) => {
-        return todo_all.filter(todo => todo.priority === priority);
+        return todoManager.todoList.filter(todo => todo.priority === priority);
+        // return todo_all.filter(todo => todo.priority === priority);
     },
     filterByStatus: (todoStatus) => {
-        return todo_all.filter(todo => todo.status === todoStatus);
+        return todoManager.todoList.filter(todo => todo.status === todoStatus);
+        // return todo_all.filter(todo => todo.status === priority);
     },
 };
 
@@ -25,7 +27,7 @@ function filterTodos() {
     filteredTasks.incompleteTasks = filters.filterByStatus("incomplete");
 };
 
-
+export { filterTodos, filteredTasks };
  // --- Class for Creating filters --- //
 /*
 class filterdTask {

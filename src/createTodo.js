@@ -1,6 +1,6 @@
-import { todo_all } from "./index.js";
+// import { todo_all } from "./index.js";
+import todoManager from "./todoManager.js";
 import { filterTodos } from "./filterArrays";
-export default createTodo;
 
 class Todo {
     constructor(title, description, dueDate, priority, status) {
@@ -24,6 +24,9 @@ class Todo {
 
 function createTodo(title, description, dueDate, priority, todoStatus) {
     let newTodo = new Todo(title, description, dueDate, priority, todoStatus);
-    todo_all.push(newTodo);
+    todoManager.todoAdd(newTodo);
+    // todo_all.push(newTodo);
     filterTodos();
 };
+
+export default createTodo;
