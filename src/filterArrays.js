@@ -30,13 +30,19 @@ function filterTodos() {
 export { filterTodos, filteredTasks };
  // --- Class for Creating filters --- //
 /*
-class filterdTask {
-    constructor(newFilterName, condition) {
-        this.newFilter = newFilterName;
+class Filter {
+    constructor(filterBy___, condition) {
+        this.filterBy___ = filterBy___;
         this.condition = condition;
         this.newFilter = [];
+
+        /* this.newFilter = 
+        filterBy___: (condition) {
+            return todoManger.todoList.filter(todo => todo.condition === condition);
+        } /*
     }
 
+    // --- Neded ? --- //
     filterByPriority() {
         this.newFilter = filters.filterByPriority(this.condition);
     }
