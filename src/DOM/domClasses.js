@@ -65,5 +65,20 @@ class Button {
     }
 };
 
+class TodoFolder {
+    constructor (folderName, folderId) {
+        this.folderName = folderName;
+        this.folderId = folderId;
+    }
 
-export { FormRow, Button };
+    createFolder () {
+        const folder = document.createElement("div");
+        folder.textContent(this.folderName);
+        folder.classList.add("todo-folder");
+        folder.setAttribute("id", this.folderId);
+
+        return folder;
+    }
+};
+
+export { FormRow, Button, TodoFolder };
