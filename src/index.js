@@ -1,9 +1,9 @@
 import createTodo from "./createTodo";
 import todoManager from "./todoManager";
 import { filteredTasks } from "./filterArrays";
-// const todo_all = [];
-// export { todo_all };
 
+import "./style.css";
+// === LOGIC === //
 function newTodo(a, b, c, d, e) {
     createTodo(a, b, c, d, e)
 };
@@ -17,3 +17,6 @@ console.log(
     filteredTasks,
     // filteredTasks.highPriorityTasks,
 );
+
+
+// === DOM === //
