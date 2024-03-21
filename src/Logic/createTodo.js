@@ -1,6 +1,6 @@
 // import { todo_all } from "./index.js";
 import todoManager from "./todoManager.js";
-import { filterTodos } from "./filterArrays";
+import { filterTodos } from "./filterArrays.js";
 
 class Todo {
     constructor(title, description, dueDate, priority, status) {

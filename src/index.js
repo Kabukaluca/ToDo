@@ -1,6 +1,6 @@
-import createTodo from "./createTodo";
-import todoManager from "./todoManager";
-import { filteredTasks } from "./filterArrays";
+import createTodo from "./Logic/createTodo";
+import todoManager from "./Logic/todoManager";
+import { filteredTasks } from "./Logic/filterArrays";
 
 import "./style.css";
 // === LOGIC === //
