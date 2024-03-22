@@ -20,9 +20,13 @@ const mainContent = document.createElement("div");
 
 
 // == Append Elements == //
-sidebar.appendChild(allTodo);
-sidebar.appendChild(priorities);
-sidebar.appendChild(completed);
+const displayContent = () => {
+    sidebar.appendChild(allTodo.createFolder());
+    sidebar.appendChild(priorities.createFolder());
+    sidebar.appendChild(completed.createFolder());
 
-content.appendChild(sidebar);
-content.appendChild(mainContent);
+    content.appendChild(sidebar);
+    content.appendChild(mainContent);
+};
+
+export default displayContent;

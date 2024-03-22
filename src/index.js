@@ -1,6 +1,7 @@
 import createTodo from "./Logic/createTodo";
 import todoManager from "./Logic/todoManager";
 import { filteredTasks } from "./Logic/filterArrays";
+import displayContent from "./DOM/domStructure";
 
 import "./style.css";
 // === LOGIC === //
@@ -17,6 +18,8 @@ console.log(
     filteredTasks,
     // filteredTasks.highPriorityTasks,
 );
+
+displayContent();
 
 
 // === DOM === //

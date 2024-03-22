@@ -73,7 +73,7 @@ class TodoFolder {
 
     createFolder () {
         const folder = document.createElement("div");
-        folder.textContent(this.folderName);
+        folder.textContent= this.folderName;
         folder.classList.add("todo-folder");
         folder.setAttribute("id", this.folderId);
 
