@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: 1fr 4fr ;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+    "sidebar content";
+}
+
+.sidebar {
+    grid-area: sidebar;
+    height: 100vh;
+    min-width: 150px;
+
+    background-color: aqua;
+    border: 1px solid black;
+
+    justify-content: center;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.1rem;
+
+}
+
+.main-content {
+    grid-area: content;
+    height: 100vh;
+}
+
+.todo-folder {
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid black;
+
+    cursor: pointer;
+}
