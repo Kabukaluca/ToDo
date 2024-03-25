@@ -1,18 +1,22 @@
-import { FormRow, Button } from "./domClasses";
+import { displayAll, displayPriorities, displayCompleted } from "./displayTodos";
 
+// === EventListener === //
+function eventListeners() {
+    let all = document.getElementById("todo-folder-all");
+    let priorities = document.getElementById("todo-folder-priorities");
+    let completed = document. getElementById("todo-folder-completed");
 
-// --- Todo Creation Form --- //
-const modal = document.createElement("dialog");
-    modal.id = "form-modal";
+    all.addEventListener("click", () => {
+        displayAll();
+    });
 
-const popup = document.createElement("div");
-    popup.classList.add("form-popup");
+    priorities.addEventListener("click", () => {
+        displayPriorities();
+    });
 
-const title = document.createElement("h2");
-    title.classList.add("form-title");
+    completed.addEventListener("click", () => {
+        displayCompleted();
+    });
+};
 
-const form = document.createElement("form");
-    form.id = "form-create-todo";
-
-const createBtn = new Button ("create", "btn", "btn-create");
-const cancelBtn = new Button ("cancel", "btn", "btn-cancel");
+export default eventListeners;
