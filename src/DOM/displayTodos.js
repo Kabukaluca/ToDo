@@ -1,6 +1,6 @@
 import { filteredTasks, filterTodos } from "../Logic/filterArrays"
 import todoManager from "../Logic/todoManager";
-import { PriorityList } from "./domClasses";
+import { PriorityList, TodoFolder } from "./domClasses";
 
 
 const displayAll = () => {
@@ -16,9 +16,13 @@ const displayAll = () => {
  const displayPriorities = () => {
     clearDisplay();
     const list = document.getElementById("todo-list");
-   // const highPriorityTasks = document.createElement
-   // const mediumPriorityTasks
-   //  const lowPriorityTasks
+    const highPriorityTasks = new TodoFolder("High", "priority-container", "hihg-priority-container");
+    const mediumPriorityTasks = new TodoFolder("Medium", "priority-container", "medium-priority-container");
+    const lowPriorityTasks = new TodoFolder("low", "priority-container", "low-priority-container");
+
+    list.appendChild(highPriorityTasks.createFolder());
+    list.appendChild(mediumPriorityTasks.createFolder());
+    list.appendChild(lowPriorityTasks.createFolder());
 };
 
 const displayCompleted = () => {
@@ -32,12 +36,6 @@ const displayCompleted = () => {
 };
 
 export { displayAll, displayPriorities, displayCompleted };
-
-// const displayAll = new displayList();
-const displayHighPriority = new PriorityList("highPriorities", "high-priority-list", filteredTasks.highPriorityTasks);
-const displayMediumPriority = new PriorityList("mediumPriorities", "medium-priority-list", filteredTasks.mediumPriorityTasks);
-const displayLowPrioritity = new PriorityList("lowPriority", "low-priority-list", filteredTasks.lowPriorityTasks);
-
 
 const displayListItem = (todo) => {
     const listItem = document.createElement("li");
