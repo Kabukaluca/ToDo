@@ -11,9 +11,9 @@ const sidebar = document.createElement("div");
     sidebar.setAttribute("id", "sidebar");
     
     // -- Todo Folder -- //
-    const allTodo = new TodoFolder("All", "todo-folder-all");
-    const priorities = new TodoFolder("Priorities", "todo-folder-priorities");
-    const completed = new TodoFolder("Completed", "todo-folder-completed");
+    const allTodo = new TodoFolder("All", "todo-folder", "todo-folder-all");
+    const priorities = new TodoFolder("Priorities", "todo-folder", "todo-folder-priorities");
+    const completed = new TodoFolder("Completed", "todo-folder", "todo-folder-completed");
 
 // --- Main Content --- //
 const mainContent = document.createElement("div");

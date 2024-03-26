@@ -66,19 +66,36 @@ class Button {
 };
 
 class TodoFolder {
-    constructor (folderName, folderId) {
+    constructor (folderName, folderClass, folderId) {
         this.folderName = folderName;
+        this.folderClass = folderClass;
         this.folderId = folderId;
     }
 
     createFolder () {
         const folder = document.createElement("div");
         folder.textContent= this.folderName;
-        folder.classList.add("todo-folder");
+        folder.classList.add(this.folderClass);
         folder.setAttribute("id", this.folderId);
 
         return folder;
     }
 };
 
-export { FormRow, Button, TodoFolder };
+/* class PriorityList {
+    constructor(list, listName, id, filteredArray) {
+        this.listName = listName;
+        this.id = id;
+        this.filteredArray = filteredArray;
+        this.list = list;
+    }
+
+    createList() {
+        const listItem = document.createElement("li");
+        listItem.classList.add("todo-list-item");
+
+        list.appendChild(listItem);
+    }
+} */
+
+export { FormRow, Button, TodoFolder, /* PriorityList */ };
