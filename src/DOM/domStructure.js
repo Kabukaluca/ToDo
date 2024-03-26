@@ -8,6 +8,7 @@ const footer = document.getElementById("footer");
 //# --- Sidebar --- //
 const sidebar = document.createElement("div");
     sidebar.classList.add("sidebar");
+    sidebar.setAttribute("id", "sidebar");
     
     // -- Todo Folder -- //
     const allTodo = new TodoFolder("All", "todo-folder-all");
@@ -17,13 +18,19 @@ const sidebar = document.createElement("div");
 // --- Main Content --- //
 const mainContent = document.createElement("div");
     mainContent.classList.add("main-content");
+    mainContent.setAttribute("id", "main-content")
 
+const todoListContainer = document.createElement("ul");
+    todoListContainer.classList.add("todo-list");
+    todoListContainer.setAttribute("id", "todo-list");
 
 // == Append Elements == //
 const displayContent = () => {
     sidebar.appendChild(allTodo.createFolder());
     sidebar.appendChild(priorities.createFolder());
     sidebar.appendChild(completed.createFolder());
+
+    mainContent.appendChild(todoListContainer);
 
     content.appendChild(sidebar);
     content.appendChild(mainContent);
