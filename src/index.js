@@ -4,7 +4,7 @@ import { filteredTasks } from "./Logic/filterArrays";
 import displayContent from "./DOM/domStructure";
 // import eventListeners fro;
 import "./style.css";
-import eventListeners from "./DOM/domManager";
+import { eventListenersSidebar } from "./DOM/domManager";
 
 // === LOGIC === //
 function newTodo(a, b, c, d, e) {
@@ -19,8 +19,8 @@ newTodo("The Odin Project", "Finish the Odin Project to learn code", "31.12.2024
 // === Console Log & Display === //
 
 document.addEventListener("DOMContentLoaded", () => {
-    eventListeners();
-})
+    eventListenersSidebar();
+});
 displayContent();
 console.log(
     todoManager.todoList,
