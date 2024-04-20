@@ -57,7 +57,7 @@ class Button {
 
     createBtn() {
         const button = document.createElement("button");
-        button.textContent(this.name);
+        button.textContent = (this.name);
         button.classList.add(this.class);
         button.setAttribute("id", this.id);
         return button;

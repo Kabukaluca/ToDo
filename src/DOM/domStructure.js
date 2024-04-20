@@ -1,4 +1,4 @@
-import { TodoFolder } from "./domClasses";
+import { Button, TodoFolder } from "./domClasses";
 
 //# === website Structure / Layout === //
 const header = document.getElementById("header");
@@ -15,6 +15,9 @@ const sidebar = document.createElement("div");
     const priorities = new TodoFolder("Priorities", "todo-folder", "todo-folder-priorities");
     const completed = new TodoFolder("Completed", "todo-folder", "todo-folder-completed");
 
+    // -- New Todo -- //
+    const newTodoBtn = new Button("new Todo", "newTodoBtn", "newTodoBtn")
+
 // --- Main Content --- //
 const mainContent = document.createElement("div");
     mainContent.classList.add("main-content");
@@ -29,6 +32,7 @@ const displayContent = () => {
     sidebar.appendChild(allTodo.createFolder());
     sidebar.appendChild(priorities.createFolder());
     sidebar.appendChild(completed.createFolder());
+    sidebar.appendChild(newTodoBtn.createBtn());
 
     mainContent.appendChild(todoListContainer);
 
