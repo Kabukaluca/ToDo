@@ -1,4 +1,4 @@
-import { displayAll, displayPriorityFolder, displayCompleted, displayHighPriorities, displayMediumPriorities, displayLowPriorities } from "./displayTodos";
+import { displayAll, displayPriorityFolder, displayCompleted, displayHighPriorities, displayMediumPriorities, displayLowPriorities } from "../Logic/filterArrays";
 
 // === EventListener === //
 function eventListenersSidebar() {
@@ -7,7 +7,7 @@ function eventListenersSidebar() {
     let completed = document.getElementById("todo-folder-completed");
 
     all.addEventListener("click", () => {
-        displayAll();
+        displayAll.createDisplay();
     });
 
     priorities.addEventListener("click", () => {
@@ -16,7 +16,8 @@ function eventListenersSidebar() {
     });
 
     completed.addEventListener("click", () => {
-        displayCompleted();
+        displayCompleted.log();
+        displayCompleted.createDisplay();
     });
 };
 
@@ -26,15 +27,15 @@ function eventListenersPriorities() {
     let lowPriority = document.getElementById("low-priority-folder");
 
     highPriority.addEventListener("click", () => {
-        displayHighPriorities();
+        displayHighPriorities.createDisplay();
     });
 
     mediumPriority.addEventListener("click", () => {
-        displayMediumPriorities();
+        displayMediumPriorities.createDisplay();
     });
 
     lowPriority.addEventListener("click", () => {
-        displayLowPriorities();
+        displayLowPriorities.createDisplay();
     });
 };
 

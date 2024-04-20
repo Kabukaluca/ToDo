@@ -1,33 +1,59 @@
-// import { todo_all } from "./index.js";
 import todoManager from "./todoManager.js";
+import { Display, TodoFolder } from "../DOM/domClasses.js";
 
-let filteredTasks = [];
-
-const filters = {
-    filterByDueDate: (dueDate) => {
-        return todoManager.todoList.filter(todo => todo.dueDate === dueDate);
-        // return todo_all.filter(todo => todo.dueDate === dueDate);
-    },
-    filterByPriority: (priority) => {
-        return todoManager.todoList.filter(todo => todo.priority === priority);
-        // return todo_all.filter(todo => todo.priority === priority);
-    },
-    filterByStatus: (todoStatus) => {
-        return todoManager.todoList.filter(todo => todo.status === todoStatus);
-        // return todo_all.filter(todo => todo.status === priority);
-    },
+const getStructuredTodos = () => {
+    return { 
+        allTodos: todoManager.todoList,
+        completeTodos: todoManager.todoList.filter(todo => todo.status === "completed"),
+        highPriorityTodos: todoManager.todoList.filter(todo => todo.priority === "high"),
+        mediumPriorityTodos: todoManager.todoList.filter(todo => todo.priority === "medium"),
+        lowPriorityTodos: todoManager.todoList.filter(todo => todo.priority === "low"),
+    };
 };
 
-function filterTodos() {
-    filteredTasks.highPriorityTasks = filters.filterByPriority("high");
-    filteredTasks.mediumPriorityTasks = filters.filterByPriority("medium");
-    filteredTasks.lowPriorityTasks = filters.filterByPriority("low");
+const singleHigh = todoManager.todoList.filter(todo => todo.priority ==="high");
+console.log("Test High Single", todoManager.todoList.filter(todo => todo.priority === "high"));
 
-    filteredTasks.completeTasks = filters.filterByStatus("complete");
-    filteredTasks.incompleteTasks = filters.filterByStatus("incomplete");
+// === Display === //
+const displayAll = new Display("displayAll", todoManager.todoList);
+const displayCompleted = new Display("displayCompleted", todoManager.todoList.filter(todo => todo.status === "completed"));
+
+
+const TestHigh = new Display("HighPrioTest", singleHigh);
+const displayHighPriorities = new Display("displayHighPrio", );
+console.log(displayAll, displayCompleted, displayHighPriorities, TestHigh);
+
+const displayPriorityFolder = () => {
+    const list = document.getElementById("todo-list");
+        while (list.firstChild) {
+            list.removeChild(list.firstChild);
+        };
+    const listContainer = document.getElementById("todo-list");
+
+    const highPriorityFolder = new TodoFolder("High", "priority-folder", "high-priority-folder");
+    const mediumPriorityFolder = new TodoFolder("Medium", "priority-folder", "medium-priority-folder");
+    const lowPriorityFolder = new TodoFolder("Low", "priority-folder", "low-priority-folder");
+
+    listContainer.appendChild(highPriorityFolder.createFolder());
+    listContainer.appendChild(mediumPriorityFolder.createFolder());
+    listContainer.appendChild(lowPriorityFolder.createFolder());
 };
 
-export { filterTodos, filteredTasks };
+const displayMediumPriorities = new Display("mediumPriority", );
+const displayLowPriorities = new Display("lowPriority", );
+
+
+export { 
+    getStructuredTodos,
+    displayPriorityFolder,
+    displayLowPriorities,
+    displayMediumPriorities,
+    displayHighPriorities,
+    displayCompleted,
+    displayAll
+};
+
+
  // --- Class for Creating filters --- //
 /*
 class Filter {

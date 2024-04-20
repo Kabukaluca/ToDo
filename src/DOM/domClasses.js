@@ -48,7 +48,6 @@ class FormRow {
     }
 };
 
-
 class Button {
     constructor (btnName, btnClass, btnId) {
         this.name = btnName;
@@ -98,4 +97,50 @@ class TodoFolder {
     }
 } */
 
-export { FormRow, Button, TodoFolder, /* PriorityList */ };
+class Display {
+    constructor(displayName, filteredArray,) {
+        this.name = displayName;
+        this.array = filteredArray;
+    }
+
+    log() {
+        console.log(this.array)
+    }
+
+    displayListItem(todo) {
+        const listItem = document.createElement("li");
+            listItem.classList.add("todo-list-item")
+            listItem.innerHTML = `
+                <strong>Title:</strong> ${todo.title}<br>
+                <strong>Description:</strong> ${todo.description}<br>
+                <strong>Due:</strong> ${todo.dueDate}<br>
+                <strong>Priority:</strong> ${todo.priority}<br>
+                <strong>Status:</strong> ${todo.status}<br>
+            `;
+        return listItem;
+    };
+
+    clearDisplay() {
+        console.log("Display Array:", this.array) //
+        const list = document.getElementById("todo-list");
+        while (list.firstChild) {
+            list.removeChild(list.firstChild);
+        };
+    }
+
+    createDisplay() {
+        console.log("Display Array:", this.array); //
+        this.clearDisplay();
+        const array = this.array;
+        const list = document.getElementById("todo-list");
+        array.forEach(todo => {
+            const listItem = this.displayListItem(todo);
+            list.appendChild(listItem);
+        });
+        return list;
+    }
+};
+
+
+
+export { FormRow, Button, TodoFolder, Display };

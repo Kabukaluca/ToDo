@@ -1,4 +1,3 @@
-
 class TodoManager {
     constructor() {
         this.todoList = [];

@@ -1,10 +1,9 @@
 import createTodo from "./Logic/createTodo";
-import todoManager from "./Logic/todoManager";
-import { filteredTasks } from "./Logic/filterArrays";
+import { getStructuredTodos } from "./Logic/filterArrays";
 import displayContent from "./DOM/domStructure";
-// import eventListeners fro;
 import "./style.css";
 import { eventListenersSidebar } from "./DOM/domManager";
+
 
 // === LOGIC === //
 function newTodo(a, b, c, d, e) {
@@ -16,17 +15,12 @@ newTodo("Medium Todo", "This should create a medium prio todo", "13.13.23", "med
 newTodo("The Odin Project", "Finish the Odin Project to learn code", "31.12.2024", "high", "incomplete");
 
 
-// === Console Log & Display === //
 
+
+// === Console Log & Display === //
 document.addEventListener("DOMContentLoaded", () => {
     eventListenersSidebar();
 });
+
 displayContent();
-console.log(
-    todoManager.todoList,
-    filteredTasks,
-    // filteredTasks.highPriorityTasks,
-);
-
-
-// === DOM === //
+console.log("Test get Structure", getStructuredTodos());
