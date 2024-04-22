@@ -23,7 +23,15 @@ class TodoManager {
                 todo.completed = !todo.completed;
             };
         });
-    }
+    };
+
+    getTodoByStatus(status) {
+        return this.todoList.filter(todo => todo.status === status);
+    };
+
+    getTodoByPriority(priority) {
+        return this.todoList.filter(todo => todo.priority === priority);
+    };
 };
 
 const todoManager = new TodoManager();

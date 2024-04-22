@@ -5,6 +5,7 @@ const header = document.getElementById("header");
 const content = document.getElementById("content");
 const footer = document.getElementById("footer");
 
+
 //# --- Sidebar --- //
 const sidebar = document.createElement("div");
     sidebar.classList.add("sidebar");
@@ -16,7 +17,8 @@ const sidebar = document.createElement("div");
     const completed = new TodoFolder("Completed", "todo-folder", "todo-folder-completed");
 
     // -- New Todo -- //
-    const newTodoBtn = new Button("new Todo", "newTodoBtn", "newTodoBtn")
+    const newTodoBtn = new Button("＋new Todo", "newTodoBtn", "newTodoBtn")
+
 
 // --- Main Content --- //
 const mainContent = document.createElement("div");
@@ -27,6 +29,7 @@ const todoListContainer = document.createElement("ul");
     todoListContainer.classList.add("todo-list");
     todoListContainer.setAttribute("id", "todo-list");
 
+    
 // == Append Elements == //
 const displayContent = () => {
     sidebar.appendChild(allTodo.createFolder());

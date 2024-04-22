@@ -81,22 +81,6 @@ class TodoFolder {
     }
 };
 
-/* class PriorityList {
-    constructor(list, listName, id, filteredArray) {
-        this.listName = listName;
-        this.id = id;
-        this.filteredArray = filteredArray;
-        this.list = list;
-    }
-
-    createList() {
-        const listItem = document.createElement("li");
-        listItem.classList.add("todo-list-item");
-
-        list.appendChild(listItem);
-    }
-} */
-
 class Display {
     constructor(displayName, filteredArray,) {
         this.name = displayName;
@@ -140,7 +124,6 @@ class Display {
         return list;
     }
 };
-
 
 
 export { FormRow, Button, TodoFolder, Display };

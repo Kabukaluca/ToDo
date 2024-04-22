@@ -1,4 +1,5 @@
-import { displayAll, displayPriorityFolder, displayCompleted, displayHighPriorities, displayMediumPriorities, displayLowPriorities } from "../Logic/filterArrays";
+import todoManager from "../Logic/todoManager";
+import { Display, TodoFolder } from "./domClasses";
 
 // === EventListener === //
 function eventListenersSidebar() {
@@ -7,17 +8,30 @@ function eventListenersSidebar() {
     let completed = document.getElementById("todo-folder-completed");
 
     all.addEventListener("click", () => {
-        displayAll.createDisplay();
+        new Display("displayAll", todoManager.todoList).createDisplay();
     });
 
     priorities.addEventListener("click", () => {
-        displayPriorityFolder();
+       const list = document.getElementById("todo-list");
+
+       while (list.firstChild) {
+        list.removeChild(list.firstChild);
+       };
+       const listContainer = document.getElementById("todo-list");
+
+        const highPriorityFolder = new TodoFolder("High", "priority-folder", "high-priority-folder");
+        const mediumPriorityFolder = new TodoFolder("Medium", "priority-folder", "medium-priority-folder");
+        const lowPriorityFolder = new TodoFolder("Low", "priority-folder", "low-priority-folder");
+
+        listContainer.appendChild(highPriorityFolder.createFolder());
+        listContainer.appendChild(mediumPriorityFolder.createFolder());
+        listContainer.appendChild(lowPriorityFolder.createFolder());
+
         eventListenersPriorities();
     });
 
     completed.addEventListener("click", () => {
-        displayCompleted.log();
-        displayCompleted.createDisplay();
+        new Display("displayCompleted", todoManager.getTodoByStatus("complete")).createDisplay();
     });
 };
 
@@ -27,15 +41,15 @@ function eventListenersPriorities() {
     let lowPriority = document.getElementById("low-priority-folder");
 
     highPriority.addEventListener("click", () => {
-        displayHighPriorities.createDisplay();
+        new Display("displayHighPriorities", todoManager.getTodoByPriority("high")).createDisplay();
     });
 
     mediumPriority.addEventListener("click", () => {
-        displayMediumPriorities.createDisplay();
+        new Display("displayMediumPriorities", todoManager.getTodoByPriority("medium")).createDisplay();
     });
 
     lowPriority.addEventListener("click", () => {
-        displayLowPriorities.createDisplay();
+        new Display("displayLowPriorities", todoManager.getTodoByPriority("low")).createDisplay();
     });
 };
 
