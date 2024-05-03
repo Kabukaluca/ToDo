@@ -1,11 +1,15 @@
+// import createTodo from "../Logic/createTodo";
 import todoManager from "../Logic/todoManager";
 import { Display, TodoFolder } from "./domClasses";
+import { displayNewTodoForm, closeNewTodoForm } from "./domStructure";
+import { checkValidity } from "../Logic/formInputHandler";
 
 // === EventListener === //
 function eventListenersSidebar() {
     let all = document.getElementById("todo-folder-all");
     let priorities = document.getElementById("todo-folder-priorities");
     let completed = document.getElementById("todo-folder-completed");
+    let newTodo = document.getElementById("newTodoBtn");
 
     all.addEventListener("click", () => {
         new Display("displayAll", todoManager.todoList).createDisplay();
@@ -33,6 +37,12 @@ function eventListenersSidebar() {
     completed.addEventListener("click", () => {
         new Display("displayCompleted", todoManager.getTodoByStatus("complete")).createDisplay();
     });
+
+    newTodo.addEventListener("click", () => {
+        displayNewTodoForm();
+        eventListenersModal();
+        console.log(todoManager.todoList); // FOR TESTING
+    });
 };
 
 function eventListenersPriorities() {
@@ -52,5 +62,20 @@ function eventListenersPriorities() {
         new Display("displayLowPriorities", todoManager.getTodoByPriority("low")).createDisplay();
     });
 };
+
+function eventListenersModal() {
+    let formSubmitBtn = document.getElementById("new-todo-form-submit-btn");
+    let formModal = document.getElementById("form-modal");
+
+    formSubmitBtn.addEventListener("click", () => {
+        checkValidity();
+    });
+    
+    formModal.addEventListener("click", (event) => {
+        if (event.target === formModal) {
+        closeNewTodoForm();
+        };
+    });
+}
 
 export { eventListenersSidebar, eventListenersPriorities };

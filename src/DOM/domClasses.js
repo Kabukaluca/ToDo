@@ -1,12 +1,13 @@
-class FormRow {
-    constructor(labelText, inputType, inputName, inputId, inputPlaceholder, inputRequired, errorId) {
+class FormRowInput {
+    constructor(labelText, inputType, inputName, inputPlaceholder, inputRequired, errorId, errorMsg) {
         this.labelText = labelText;
         this.inputType = inputType;
         this.inputName = inputName;
-        this.inputId = inputId;
+        this.inputId = inputName;
         this.inputPlaceholder = inputPlaceholder;
         this.inputRequired = inputRequired;
         this.errorId = errorId;
+        this.errorMsg = errorMsg;
     }
 
     createLabel() {
@@ -32,17 +33,133 @@ class FormRow {
         const errorField = document.createElement("div");
         errorField.classList.add("error-field");
         errorField.setAttribute("id", this.errorId);
+        errorField.textContent = this.errorMsg;
         return errorField;
     }
 
     createFormRow() {
         const label = this.createLabel();
+        const br = document.createElement("br");
         const input = this.createInput();
         const errorField = this.createErrorField();
         const formRow = document.createElement("div");
         formRow.classList.add("form-row");
         formRow.appendChild(label);
+        formRow.appendChild(br);
         formRow.appendChild(input);
+        formRow.appendChild(errorField);
+        return formRow;
+    }
+};
+
+class FormRowSelect {
+    constructor(labelText, id, inputRequired, errorId, selectOptions) {
+        this.labelText = labelText;
+        this.id = id;
+        // this.inputPlaceholder = inputPlaceholder;
+        this.inputRequired = inputRequired;
+        this.errorId = errorId;
+        this.selectOptions = selectOptions;
+    }
+
+    createLabel() {
+        const label = document.createElement("label");
+        label.textContent = this.labelText;
+        label.setAttribute("for", this.id);
+        return label;
+    }
+
+    createSelect() {
+        const select = document.createElement("select");
+        select.setAttribute("id", this.id);
+       // select.setAttribute("placeholder", this.inputPlaceholder);
+        if (this.inputRequired) {
+            select.setAttribute("required", "")
+        };
+        return select;
+    }
+
+    createOptions() {
+        const options = this.selectOptions.map(option => {
+            const optionElement = document.createElement("option");
+            optionElement.value = option.value;
+            optionElement.textContent = option.value;
+            return optionElement;
+        });        
+        return options;
+    }
+
+    createErrorField() {
+        const errorField = document.createElement("div");
+        errorField.classList.add("error-field");
+        errorField.setAttribute("id", this.errorId);
+        return errorField;
+    }
+
+    createFormRow() {
+        const label = this.createLabel();
+        const br = document.createElement("br");
+        const select = this.createSelect();
+        const options = this.createOptions();
+        const errorField = this.createErrorField();
+        const formRow = document.createElement("div");
+
+        formRow.classList.add("form-row");
+        formRow.appendChild(label);
+        formRow.appendChild(br);
+        formRow.appendChild(select);
+        formRow.appendChild(errorField);
+        
+        options.forEach(option => {
+            select.appendChild(option);
+        });
+
+        return formRow;
+    }
+};
+
+class FormRowTextarea {
+    constructor(labelText, id, inputPlaceholder, errorId) {
+        this.labelText = labelText;
+        this.id = id;
+        this.inputPlaceholder = inputPlaceholder;
+        this.errorId = errorId;
+    }
+
+    createLabel() {
+        const label = document.createElement("label");
+        label.textContent = this.labelText;
+        label.setAttribute("for", this.id);
+        return label;
+    }
+
+    createTextarea() {
+        const textarea = document.createElement("textarea");
+        textarea.setAttribute("id", this.id);
+        textarea.setAttribute("placeholder", this.inputPlaceholder);
+        if (this.inputRequired) {
+            textarea.setAttribute("required", "")
+        };
+        return textarea;
+    }
+
+    createErrorField() {
+        const errorField = document.createElement("div");
+        errorField.classList.add("error-field");
+        errorField.setAttribute("id", this.errorId);
+        return errorField;
+    }
+
+    createFormRow() {
+        const label = this.createLabel();
+        const br = document.createElement("br");
+        const textarea = this.createTextarea();
+        const errorField = this.createErrorField();
+        const formRow = document.createElement("div");
+        formRow.classList.add("form-row");
+        formRow.appendChild(label);
+        formRow.appendChild(br);
+        formRow.appendChild(textarea);
         formRow.appendChild(errorField);
         return formRow;
     }
@@ -126,4 +243,4 @@ class Display {
 };
 
 
-export { FormRow, Button, TodoFolder, Display };
+export { FormRowInput, FormRowSelect, FormRowTextarea, Button, TodoFolder, Display };
