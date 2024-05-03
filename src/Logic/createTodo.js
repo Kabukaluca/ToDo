@@ -7,8 +7,13 @@ class Todo {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.status = status;
+        this.status = this.getStatus(status);
     }
+
+    getStatus(status) {
+        return status ? "Complete" : "Incomplete";
+    }
+
     createData() {
         let data = {
             Title: this.title,
