@@ -1,11 +1,10 @@
 import createTodo from "./createTodo";
 import { closeNewTodoForm } from "../DOM/domStructure";
 import todoManager from "./todoManager";
+import { Display } from "../DOM/domClasses";
 
 
 const checkValidity = () => {
-    const todoForm = document.getElementById("new-todo-form");
-    
         let todoName = document.getElementById("Todo").value;
         let todoDescription = document.getElementById("Description").value;
         let todoDue = document.getElementById("Due").value;
@@ -23,6 +22,7 @@ const checkValidity = () => {
         } else {
             createTodo(todoName, todoDescription, todoDue, todoPriority, todoStatus);
             console.log(todoManager.todoList);
+            new Display("displayAll", todoManager.todoList).createDisplay();
             closeNewTodoForm();
         };
 }; 
