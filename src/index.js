@@ -2,6 +2,14 @@ import createTodo from "./Logic/createTodo";
 import { displayContent } from "./DOM/domStructure";
 import "./style.css";
 import { eventListenersSidebar } from "./DOM/domManager";
+import { Display } from "./DOM/domClasses";
+import todoManager from "./Logic/todoManager";
+
+
+// EventListener //
+document.addEventListener("DOMContentLoaded", () => {
+    new Display("displayAll", todoManager.todoList).createDisplay();
+});
 
 
  // Create new Todos //
