@@ -1,4 +1,3 @@
-// import { todo_all } from "./index.js";
 import todoManager from "./todoManager.js";
 
 class Todo {
