@@ -1,3 +1,5 @@
+import todoManager from "../Logic/todoManager";
+
 class FormRowInput {
     constructor(labelText, inputType, inputName, inputPlaceholder, inputRequired, errorId, errorMsg) {
         this.labelText = labelText;
@@ -204,22 +206,47 @@ class Display {
         this.array = filteredArray;
     }
 
-    log() {
-        console.log(this.array)
-    }
-
     displayListItem(todo) {
         const listItem = document.createElement("li");
             listItem.classList.add("todo-list-item")
+            listItem.setAttribute("list-id", `${todo.id}`);
             listItem.innerHTML = `
-                <strong>Title:</strong> ${todo.title}<br>
-                <strong>Description:</strong> ${todo.description}<br>
-                <strong>Due:</strong> ${todo.dueDate}<br>
-                <strong>Priority:</strong> ${todo.priority}<br>
-                <strong>Status:</strong> ${todo.status}<br>
+
+            <div class="item-row"> <strong>Title:</strong> <br> - ${todo.title} </div>
+                
+            <div class="item-row"> <strong>Description:</strong> <br> - ${todo.description} </div>
+                
+            <div class="item-row"> <strong>Due:</strong> <br> - ${todo.dueDate} </div>
+                
+            <div class="item-row"> <strong>Priority:</strong> <br> - ${todo.priority} </div>
+                
+            <div class="item-row"> <strong>Status:</strong> <br> - ${todo.status} </div>
             `;
+           
+        const removeItem = document.createElement("button");
+            removeItem.classList.add("remove-item-btn");
+            removeItem.textContent = "Remove";
+            removeItem.addEventListener("click", () => {
+                this.removeTodoandUpdateDisplay(todo.id);
+            });
+
+        /* const editTodo = document.createElement("button");
+            editTodo.classList.add("edit-todo-btn");
+            editTodo.setAttribute("id", "edit-todo-btn)")
+        */
+        listItem.appendChild(removeItem);
         return listItem;
-    };
+    }
+    
+    removeTodoandUpdateDisplay(todoId) {
+        this.array = this.array.filter(todo => todo.id !== todoId);
+        this.array.forEach((todo, index) => {
+            todo.id = index;
+        });
+        this.nextId = this.array.length;
+        console.log("after removal: ", this.array);
+        this.createDisplay();
+    }
 
     clearDisplay() {
         console.log("Display Array:", this.array) //
@@ -230,7 +257,6 @@ class Display {
     }
 
     createDisplay() {
-        console.log("Display Array:", this.array); //
         this.clearDisplay();
         const array = this.array;
         const list = document.getElementById("todo-list");

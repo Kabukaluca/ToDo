@@ -35,13 +35,12 @@ function eventListenersSidebar() {
     });
 
     completed.addEventListener("click", () => {
-        new Display("displayCompleted", todoManager.getTodoByStatus("complete")).createDisplay();
+        new Display("displayCompleted", todoManager.getTodoByStatus("Complete")).createDisplay();
     });
 
     newTodo.addEventListener("click", () => {
         displayNewTodoForm();
         eventListenersModal();
-        console.log(todoManager.todoList); // FOR TESTING
     });
 };
 
@@ -76,6 +75,6 @@ function eventListenersModal() {
         closeNewTodoForm();
         };
     });
-}
+};
 
 export { eventListenersSidebar, eventListenersPriorities };

@@ -1,4 +1,4 @@
-import { Button, FormRow, FormRowInput, FormRowSelect, FormRowTextarea, TodoFolder } from "./domClasses";
+import { Button, FormRowInput, FormRowSelect, FormRowTextarea, TodoFolder } from "./domClasses";
 
 //# === website Structure / Layout === //
 const header = document.getElementById("header");
