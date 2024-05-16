@@ -227,24 +227,115 @@ class Display {
             removeItem.classList.add("remove-item-btn");
             removeItem.textContent = "Remove";
             removeItem.addEventListener("click", () => {
-                this.removeTodoandUpdateDisplay(todo.id);
+                this.removeTodoAndUpdateDisplay(todo.id);
             });
 
-        /* const editTodo = document.createElement("button");
-            editTodo.classList.add("edit-todo-btn");
-            editTodo.setAttribute("id", "edit-todo-btn)")
-        */
+        const editItem = document.createElement("button");
+            editItem.textContent = "Edit";
+            editItem.classList.add("edit-todo-btn");
+            editItem.setAttribute("id", "edit-todo-btn")
+            editItem.addEventListener("click", () => {
+                this.editTodoForm(todo);
+            });
+    
         listItem.appendChild(removeItem);
+        listItem.appendChild(editItem);
         return listItem;
     }
-    
-    removeTodoandUpdateDisplay(todoId) {
+
+    // Remove Todo
+    removeTodoAndUpdateDisplay(todoId) {
         this.array = this.array.filter(todo => todo.id !== todoId);
         this.array.forEach((todo, index) => {
             todo.id = index;
         });
         this.nextId = this.array.length;
         console.log("after removal: ", this.array);
+        this.createDisplay();
+    }
+
+    // Edit Todo 
+    editTodoForm(todo) {
+        const listItem = document.querySelector(`li[list-id="${todo.id}"]`);
+
+        const titleInput = document.createElement("input");
+            titleInput.type = "text";
+            titleInput.value= todo.title;
+            titleInput.classList.add("title-edit-input");
+
+        const descriptionInput = document.createElement("textarea");
+            descriptionInput.value = todo.description;
+            descriptionInput.classList.add("description-edit-input");
+        
+        const dueDateInput = document.createElement("input");
+            dueDateInput.type = "date";
+            dueDateInput.value = todo.dueDate;
+            dueDateInput.classList.add("due-date-edit-input");
+        
+        const priorityInput = document.createElement("select");
+        const priorityOptions = ["High", "Medium", "Low"];
+            priorityOptions.forEach(option => {
+                const optionElement = document.createElement("option");
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                if (option === todo.priority) {
+                    optionElement.selected = true;
+                };
+                priorityInput.appendChild(optionElement);
+            });
+        priorityInput.classList.add("priority-edit-input");
+
+        const statusInput = document.createElement("input");
+            statusInput.type = "checkbox";
+            statusInput.checked = todo.status === "Complete";
+            statusInput.classList.add("status-edit-input");
+            
+        // Editor Layout
+        listItem.querySelector(".item-row:nth-child(1)").innerHTML = `<strong>Title:</strong><br>`;
+        listItem.querySelector(".item-row:nth-child(1)").appendChild(titleInput);
+
+        listItem.querySelector(".item-row:nth-child(2)").innerHTML = `<strong>Description:</strong><br>`;
+        listItem.querySelector(".item-row:nth-child(2)").appendChild(descriptionInput);
+
+        listItem.querySelector(".item-row:nth-child(3)").innerHTML = `<strong>Due:</strong><br>`;
+        listItem.querySelector(".item-row:nth-child(3)").appendChild(dueDateInput);
+
+        listItem.querySelector(".item-row:nth-child(4)").innerHTML = `<strong>Priority:</strong><br>`;
+        listItem.querySelector(".item-row:nth-child(4)").appendChild(priorityInput);
+
+        listItem.querySelector(".item-row:nth-child(5)").innerHTML = `<strong>Status:</strong>`;
+        listItem.querySelector(".item-row:nth-child(5)").appendChild(statusInput);
+
+        const editBtn = listItem.querySelector(".edit-todo-btn");
+        if (editBtn) {
+            editBtn.remove();
+        }
+
+        // Save Button
+        const saveButton = document.createElement("button");
+            saveButton.textContent = "Save";
+            saveButton.classList.add("save-item-btn");
+            saveButton.addEventListener("click", () => {
+                this.editTodoSave(todo);
+            });
+
+        listItem.appendChild(saveButton);
+    }
+
+    editTodoSave(todo) {
+        const listItem = document.querySelector(`li[list-id="${todo.id}"]`);
+        const titleInput = listItem.querySelector(`.title-edit-input`).value;
+        const descriptionInput = listItem.querySelector(`.description-edit-input`).value;
+        const dueDateInput = listItem.querySelector(`.due-date-edit-input`).value;
+        const priorityInput = listItem.querySelector(`.priority-edit-input`).value;
+        const statusInput = listItem.querySelector(`.status-edit-input`).checked ? "Complete" : "Incomplete";
+    
+        todo.title = titleInput;
+        todo.description = descriptionInput;
+        todo.dueDate = dueDateInput;
+        todo.priority = priorityInput;
+        todo.status = statusInput;
+
         this.createDisplay();
     }
 
