@@ -1,7 +1,6 @@
-// import createTodo from "../Logic/createTodo";
 import todoManager from "../Logic/todoManager";
 import { Display, TodoFolder } from "./domClasses";
-import { displayNewTodoForm, closeNewTodoForm } from "./domStructure";
+import { displayNewTodoForm, closeNewTodoForm } from "../DOM/formModals.js";
 import { checkValidity } from "../Logic/formInputHandler";
 
 // === EventListener === //
@@ -9,7 +8,7 @@ function eventListenersSidebar() {
     let all = document.getElementById("todo-folder-all");
     let priorities = document.getElementById("todo-folder-priorities");
     let completed = document.getElementById("todo-folder-completed");
-    let newTodo = document.getElementById("newTodoBtn");
+    let newTodo = document.getElementById("new-todo-btn");
 
     all.addEventListener("click", () => {
         new Display("displayAll", todoManager.todoList).createDisplay();

@@ -39,7 +39,7 @@ body {
     cursor: pointer;
 }
 
-#newTodoBtn {
+.new-element-btn {
     padding: 1rem;
     margin: 1rem;
 

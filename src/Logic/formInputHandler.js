@@ -1,5 +1,5 @@
 import createTodo from "./createTodo";
-import { closeNewTodoForm } from "../DOM/domStructure";
+import { closeNewTodoForm } from "../DOM/formModals.js";
 import todoManager from "./todoManager";
 import { Display } from "../DOM/domClasses";
 
