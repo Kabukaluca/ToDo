@@ -1,4 +1,4 @@
-import { FormRow, Button } from "./domClasses";
+import { Button } from "./domClasses";
 
 // --- Todo Creation Form --- //
 const modal = document.createElement("dialog");

@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
  // Create new Todos //
-createTodo("Low Todo", "This should create a low prio todo", "1.1.23", "low", true);
-createTodo("Medium Todo", "This should create a medium prio todo", "13.13.23", "medium", false);
-createTodo("The Odin Project", "Finish the Odin Project to learn code", "31.12.2024", "high", false);
+createTodo("Low Todo", "This should create a low prio todo", "2023-01-02", "low", true);
+createTodo("Medium Todo", "This should create a medium prio todo", "2023-12-13", "medium", false);
+createTodo("The Odin Project", "Finish the Odin Project to learn code", "2024-12-31", "high", false);
 
 // === Console Log & Display === //
 document.addEventListener("DOMContentLoaded", () => {

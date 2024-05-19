@@ -359,5 +359,4 @@ class Display {
     }
 };
 
-
 export { FormRowInput, FormRowSelect, FormRowTextarea, Button, TodoFolder, Display };
