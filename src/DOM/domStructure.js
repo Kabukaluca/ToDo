@@ -45,10 +45,4 @@ const footer = document.getElementById("footer");
         content.appendChild(mainContent);
     };
 
-
-
-// ## === Modal === ## //
-
-
-
 export { displayContent };
