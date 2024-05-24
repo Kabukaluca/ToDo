@@ -1,11 +1,13 @@
 import { FormRowInput, FormRowTextarea, FormRowSelect } from "./domClasses";
 
 const newTodoModal = document.createElement("div");
-    newTodoModal.setAttribute("id", "form-modal");
+    newTodoModal.setAttribute("id", "todo-form-modal");
+    newTodoModal.classList.add("modal")
     document.body.appendChild(newTodoModal);
     
 const newTodoForm = document.createElement("form");
     newTodoForm.setAttribute("id", "new-todo-form");
+    newTodoForm.classList.add("form");
 
 const todoFormNameInput = new FormRowInput("Todo:", "text", "Todo", "Todo", "true", "todo-error", "Nothing todo ?");
 const todoFormDescriptionInput = new FormRowTextarea("Description:", "Description", "About xy..", "errorId");
@@ -42,11 +44,13 @@ const submitTodoForm = document.createElement("input");
 // --- new Project Form --- //
 const newProjectModal = document.createElement("div");
     newProjectModal.setAttribute("id", "new-project-modal");
+    newProjectModal.classList.add("modal");
     document.body.appendChild(newProjectModal);
 
 const newProjectForm = document.createElement("form");
     newProjectForm.setAttribute("id", "new-project-form");
-    const projectFormNameInput = new FormRowInput("Todo:", "text", "Todo", "Todo", "true", "todo-error", "Nothing todo ?");
+    newProjectForm.classList.add("form");
+    const projectFormNameInput = new FormRowInput("Project:", "text", "Project", "Project", "true", "project-error", "Just casual stuff ?");
     
 const submitProjectForm = document.createElement("input");
     submitProjectForm.setAttribute("type", "button");

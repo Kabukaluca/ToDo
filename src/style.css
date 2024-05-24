@@ -79,7 +79,8 @@ body {
 
 
 /* === Modal & Form === */
- #form-modal {
+/* Common Modal Styles */
+ .modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -91,7 +92,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
  }
 
- #new-todo-form {
+ .form {
     background-color: rgb(255, 255, 255);
     margin: 15% auto;
     padding: 20px;
@@ -125,3 +126,14 @@ body {
     border-radius: 2px;
     width: 80%;
  }
+
+ /* Specific IDs for Modals */
+#todo-form-modal,
+#project-form-modal {
+    z-index: 10;;
+}
+ /* Specific IDs for Forms */
+#new-todo-form,
+#new-project-form {
+    z-index: 11;
+}

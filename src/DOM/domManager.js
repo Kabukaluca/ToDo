@@ -1,6 +1,6 @@
 import todoManager from "../Logic/todoManager";
 import { Display, TodoFolder } from "./domClasses";
-import { displayNewTodoForm, closeNewTodoForm } from "../DOM/formModals.js";
+import { displayNewTodoForm, closeNewTodoForm, displayNewProjectForm } from "../DOM/formModals.js";
 import { checkValidity } from "../Logic/formInputHandler";
 
 // === EventListener === //
@@ -9,6 +9,7 @@ function eventListenersSidebar() {
     let priorities = document.getElementById("todo-folder-priorities");
     let completed = document.getElementById("todo-folder-completed");
     let newTodo = document.getElementById("new-todo-btn");
+    let newProject = document.getElementById("new-project-btn");
 
     all.addEventListener("click", () => {
         new Display("displayAll", todoManager.todoList).createDisplay();
@@ -39,8 +40,13 @@ function eventListenersSidebar() {
 
     newTodo.addEventListener("click", () => {
         displayNewTodoForm();
-        eventListenersModal();
+        eventListenersTodoModal();
     });
+
+    newProject.addEventListener("click", () => {
+        displayNewProjectForm();
+        eventListenersProjectModal();
+    })
 };
 
 function eventListenersPriorities() {
@@ -61,19 +67,34 @@ function eventListenersPriorities() {
     });
 };
 
-function eventListenersModal() {
-    let formSubmitBtn = document.getElementById("new-todo-form-submit-btn");
-    let formModal = document.getElementById("form-modal");
+function eventListenersTodoModal() {
+    let todoFormSubmitBtn = document.getElementById("new-todo-form-submit-btn");
+    let todoFormModal = document.getElementById("todo-form-modal");
 
-    formSubmitBtn.addEventListener("click", () => {
+    todoFormSubmitBtn.addEventListener("click", () => {
         checkValidity();
     });
     
-    formModal.addEventListener("click", (event) => {
-        if (event.target === formModal) {
+    todoFormModal.addEventListener("click", (event) => {
+        if (event.target === todoFormModal) {
         closeNewTodoForm();
         };
     });
 };
 
+function eventListenersProjectModal() {
+    let projectFormSubmitBtn = document.getElementById("new-project-form-submit-btn");
+    let projectFormModal = document.getElementById("project-form-modal");
+
+    projectFormSubmitBtn.addEventListener("click", () => {
+        checkValidity();
+    });
+    
+    projectFormModal.addEventListener("click", (event) => {
+        if (event.target === projectFormModal) {
+        closeNewProjectForm();
+        };
+    }); 
+};
+    
 export { eventListenersSidebar, eventListenersPriorities };
