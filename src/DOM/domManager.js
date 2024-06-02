@@ -1,7 +1,7 @@
 import todoManager from "../Logic/todoManager";
 import { Display, TodoFolder } from "./domClasses";
-import { displayNewTodoForm, closeNewTodoForm, displayNewProjectForm } from "../DOM/formModals.js";
-import { checkValidity } from "../Logic/formInputHandler";
+import { displayNewTodoForm, closeNewTodoForm, displayNewProjectForm, closeNewProjectForm } from "../DOM/formModals.js";
+import { checkTodoInputValidity, checkProjectInputValidity } from "../Logic/formInputHandler";
 
 // === EventListener === //
 function eventListenersSidebar() {
@@ -72,7 +72,7 @@ function eventListenersTodoModal() {
     let todoFormModal = document.getElementById("todo-form-modal");
 
     todoFormSubmitBtn.addEventListener("click", () => {
-        checkValidity();
+        checkTodoInputValidity();
     });
     
     todoFormModal.addEventListener("click", (event) => {
@@ -84,10 +84,10 @@ function eventListenersTodoModal() {
 
 function eventListenersProjectModal() {
     let projectFormSubmitBtn = document.getElementById("new-project-form-submit-btn");
-    let projectFormModal = document.getElementById("project-form-modal");
+    let projectFormModal = document.getElementById("new-project-modal");
 
     projectFormSubmitBtn.addEventListener("click", () => {
-        checkValidity();
+        checkProjectInputValidity();
     });
     
     projectFormModal.addEventListener("click", (event) => {

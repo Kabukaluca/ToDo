@@ -50,7 +50,7 @@ const newProjectModal = document.createElement("div");
 const newProjectForm = document.createElement("form");
     newProjectForm.setAttribute("id", "new-project-form");
     newProjectForm.classList.add("form");
-    const projectFormNameInput = new FormRowInput("Project:", "text", "Project", "Project", "true", "project-error", "Just casual stuff ?");
+    const projectFormNameInput = new FormRowInput("Project:", "text", "project", "Project", "true", "project-error", "");
     
 const submitProjectForm = document.createElement("input");
     submitProjectForm.setAttribute("type", "button");
@@ -67,6 +67,8 @@ const submitProjectForm = document.createElement("input");
     };
 
     const closeNewProjectForm = () => {
+        const newProjectModal = document.getElementById("new-project-modal");
+        const newProjectForm = document.getElementById("new-project-form");
         newProjectModal.style.display = "none"
         while (newProjectForm.firstChild) {
             newProjectForm.removeChild(newProjectForm.firstChild);

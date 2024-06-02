@@ -359,4 +359,35 @@ class Display {
     }
 };
 
-export { FormRowInput, FormRowSelect, FormRowTextarea, Button, TodoFolder, Display };
+class Project {
+    constructor(projectName) {
+        this.projectName = projectName;
+    }
+
+    getProjectId() {
+       let projectId = "project-folder-" + this.projectName.toLowerCase();
+        return projectId;
+    }
+
+    createNewProject() {
+        console.log("Createn new project..."); // debug log
+
+        let sidebar = document.getElementById("sidebar");
+
+        if(!sidebar) { // debug Log
+            console.log("error: Sidebar Element not found");
+            return;
+        }
+
+        let newProjectFolder = document.createElement("div");
+        newProjectFolder.classList.add("project-folder");
+        newProjectFolder.setAttribute("id", this.getProjectId());
+        newProjectFolder.textContent = this.projectName;
+    
+        sidebar.appendChild(newProjectFolder);
+        console.log("new project folder added"); // Debug log
+        return newProjectFolder;
+    }
+}
+
+export { FormRowInput, FormRowSelect, FormRowTextarea, Button, TodoFolder, Display, Project };
