@@ -1,10 +1,10 @@
 import createTodo from "./createTodo";
-import { closeNewTodoForm } from "../DOM/formModals.js";
+import { closeNewProjectForm, closeNewTodoForm } from "../DOM/formModals.js";
 import todoManager from "./todoManager";
-import { Display } from "../DOM/domClasses";
+import { Display, Project } from "../DOM/domClasses";
 
 
-const checkValidity = () => {
+const checkTodoInputValidity = () => {
         let todoName = document.getElementById("Todo").value;
         let todoDescription = document.getElementById("Description").value;
         let todoDue = document.getElementById("Due").value;
@@ -27,5 +27,17 @@ const checkValidity = () => {
         };
 }; 
 
+const checkProjectInputValidity = () => {
+    let projectName = document.getElementById("project").value;
+    
+    if (projectName === "") {
+        const error = document.getElementById("project-error");
+        error.textContent = "Just casual stuff, eh?";
+    } else {
+        // createProject();
+        new Project(projectName).createNewProject();
+        closeNewProjectForm();
+    }
+};
 
-export { checkValidity };
+export { checkTodoInputValidity, checkProjectInputValidity };
