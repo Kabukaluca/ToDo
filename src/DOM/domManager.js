@@ -13,6 +13,7 @@ function eventListenersSidebar() {
 
     all.addEventListener("click", () => {
         new Display("displayAll", todoManager.todoList).createDisplay();
+        setCurrentProjectName("All Todo's");
     });
 
     priorities.addEventListener("click", () => {
@@ -30,12 +31,13 @@ function eventListenersSidebar() {
         listContainer.appendChild(highPriorityFolder.createFolder());
         listContainer.appendChild(mediumPriorityFolder.createFolder());
         listContainer.appendChild(lowPriorityFolder.createFolder());
-
+        setCurrentProjectName("Priorities");
         eventListenersPriorities();
     });
 
     completed.addEventListener("click", () => {
         new Display("displayCompleted", todoManager.getTodoByStatus("Complete")).createDisplay();
+        setCurrentProjectName("Completed");
     });
 
     newTodo.addEventListener("click", () => {
@@ -56,14 +58,17 @@ function eventListenersPriorities() {
 
     highPriority.addEventListener("click", () => {
         new Display("displayHighPriorities", todoManager.getTodoByPriority("high")).createDisplay();
+        setCurrentProjectName("High Priority");
     });
 
     mediumPriority.addEventListener("click", () => {
         new Display("displayMediumPriorities", todoManager.getTodoByPriority("medium")).createDisplay();
+        setCurrentProjectName("Medium Priority");
     });
 
     lowPriority.addEventListener("click", () => {
         new Display("displayLowPriorities", todoManager.getTodoByPriority("low")).createDisplay();
+        setCurrentProjectName("Low Priority");
     });
 };
 
@@ -96,5 +101,10 @@ function eventListenersProjectModal() {
         };
     }); 
 };
+
+function setCurrentProjectName(name) {
+    let currentProjectName = document.getElementById("current-folder-name");
+    currentProjectName.textContent = name;
+}
     
 export { eventListenersSidebar, eventListenersPriorities };

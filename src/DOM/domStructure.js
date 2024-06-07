@@ -6,8 +6,31 @@ const content = document.getElementById("content");
 const footer = document.getElementById("footer");
 
 
+// ## === Header === ## //
+
+    // -- App Name -- //
+    const headerLogo = document.createElement("div");
+        headerLogo.classList.add("header-logo");
+        headerLogo.setAttribute("id", "header-logo");
+        headerLogo.textContent = "TaskTango"; // set name for Website in header
+
+    // -- Current Folder Name -- //
+    const currentFolderName = document.createElement("div");
+        currentFolderName.classList.add("current-folder-name");
+        currentFolderName.setAttribute("id", "current-folder-name");
+        currentFolderName.textContent = "All Todo's";
+
+    // -- New Todo -- //
+    const newTodoBtn = new Button("＋new Todo", "new-element-btn", "new-todo-btn");
+    
+    // == Append Elements == //
+    header.appendChild(headerLogo);
+    header.appendChild(currentFolderName);
+    header.appendChild(newTodoBtn.createBtn());
+
+
 // ## === Content === ## //
-    //# --- Sidebar --- //
+    //# --- Sidebar --- #//
     const sidebar = document.createElement("div");
         sidebar.classList.add("sidebar");
         sidebar.setAttribute("id", "sidebar");
@@ -16,9 +39,6 @@ const footer = document.getElementById("footer");
         const allTodo = new TodoFolder("All", "todo-folder", "todo-folder-all");
         const priorities = new TodoFolder("Priorities", "todo-folder", "todo-folder-priorities");
         const completed = new TodoFolder("Completed", "todo-folder", "todo-folder-completed");
-
-        // -- New Todo -- //
-        const newTodoBtn = new Button("＋new Todo", "new-element-btn", "new-todo-btn");
 
         // -- New Project -- //
         const newProjectBtn = new Button("＋new Project", "new-element-btn", "new-project-btn");
@@ -37,7 +57,6 @@ const footer = document.getElementById("footer");
         sidebar.appendChild(allTodo.createFolder());
         sidebar.appendChild(priorities.createFolder());
         sidebar.appendChild(completed.createFolder());
-        sidebar.appendChild(newTodoBtn.createBtn());
         sidebar.appendChild(newProjectBtn.createBtn());
         mainContent.appendChild(todoListContainer);
 
