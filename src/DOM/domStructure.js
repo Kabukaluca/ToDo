@@ -10,18 +10,18 @@ const footer = document.getElementById("footer");
 
     // -- App Name -- //
     const headerLogo = document.createElement("div");
-        headerLogo.classList.add("header-logo");
+        headerLogo.classList.add("header-elements");
         headerLogo.setAttribute("id", "header-logo");
         headerLogo.textContent = "TaskTango"; // set name for Website in header
 
     // -- Current Folder Name -- //
     const currentFolderName = document.createElement("div");
-        currentFolderName.classList.add("current-folder-name");
+        currentFolderName.classList.add("header-elements");
         currentFolderName.setAttribute("id", "current-folder-name");
         currentFolderName.textContent = "All Todo's";
 
     // -- New Todo -- //
-    const newTodoBtn = new Button("＋new Todo", "new-element-btn", "new-todo-btn");
+    const newTodoBtn = new Button("＋new Todo", "header-elements", "new-todo-btn");
     
     // == Append Elements == //
     header.appendChild(headerLogo);
