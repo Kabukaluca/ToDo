@@ -58,7 +58,6 @@ class FormRowSelect {
     constructor(labelText, id, inputRequired, errorId, selectOptions) {
         this.labelText = labelText;
         this.id = id;
-        // this.inputPlaceholder = inputPlaceholder;
         this.inputRequired = inputRequired;
         this.errorId = errorId;
         this.selectOptions = selectOptions;
@@ -74,7 +73,6 @@ class FormRowSelect {
     createSelect() {
         const select = document.createElement("select");
         select.setAttribute("id", this.id);
-       // select.setAttribute("placeholder", this.inputPlaceholder);
         if (this.inputRequired) {
             select.setAttribute("required", "")
         };
@@ -89,6 +87,16 @@ class FormRowSelect {
             return optionElement;
         });        
         return options;
+    }
+
+    updateOptions() {
+        this.selectOptions = newOptions;
+        const select = document.getElementById(this.id);
+        select.innerHTML = "";
+        const options = this.createOptions();
+        options.forEach(option => {
+            select.appendChild(option)
+        });
     }
 
     createErrorField() {
@@ -355,13 +363,14 @@ class Display {
             const listItem = this.displayListItem(todo);
             list.appendChild(listItem);
         });
-        return list;
+        return list
     }
 };
 
 class Project {
     constructor(projectName) {
         this.projectName = projectName;
+        this.newProjectFolder = null;
     }
 
     getProjectId() {
@@ -370,7 +379,7 @@ class Project {
     }
 
     createNewProject() {
-        console.log("Createn new project..."); // debug log
+        console.log("Creating new project..."); // debug log
 
         let sidebar = document.getElementById("sidebar");
 
@@ -379,14 +388,27 @@ class Project {
             return;
         }
 
-        let newProjectFolder = document.createElement("div");
-        newProjectFolder.classList.add("project-folder");
-        newProjectFolder.setAttribute("id", this.getProjectId());
-        newProjectFolder.textContent = this.projectName;
+        this.newProjectFolder = document.createElement("div");
+        this.newProjectFolder.classList.add("project-folder");
+        this.newProjectFolder.setAttribute("id", this.getProjectId());
+        this.newProjectFolder.textContent = this.projectName;
     
-        sidebar.appendChild(newProjectFolder);
-        console.log("new project folder added"); // Debug log
-        return newProjectFolder;
+        sidebar.appendChild(this.newProjectFolder);
+        console.log("New project folder added"); // Debug log
+        this.addEventListener();
+    }
+
+    // work on filter by Project functionality
+    addEventListener() {
+        if (this.newProjectFolder) {
+            this.newProjectFolder.addEventListener("click", () => {
+                console.log("Creating newProjectFolder-Display...");
+                new Display(`${this.projectName}`, todoManager.getTodoByProject(this.getProjectId())).createDisplay();
+                console.log("New Project-Display has been created.");
+            });
+        } else {
+            console.log("No project folder created to add event listener to.");
+        };
     }
 }
 
