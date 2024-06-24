@@ -32,6 +32,10 @@ class TodoManager {
     getTodoByPriority(priority) {
         return this.todoList.filter(todo => todo.priority === priority);
     }
+
+    getTodoByProject(project) {
+        return this.todoList.filter(todo => todo.project === project);
+    }
 };
 
 const todoManager = new TodoManager();
