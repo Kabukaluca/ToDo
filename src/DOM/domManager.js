@@ -59,17 +59,17 @@ function eventListenersPriorities() {
     let lowPriority = document.getElementById("low-priority-folder");
 
     highPriority.addEventListener("click", () => {
-        new Display("displayHighPriorities", todoManager.getTodoByPriority("high")).createDisplay();
+        new Display("displayHighPriorities", todoManager.getTodoByPriority("High")).createDisplay();
         setCurrentProjectName("High Priority");
     });
 
     mediumPriority.addEventListener("click", () => {
-        new Display("displayMediumPriorities", todoManager.getTodoByPriority("medium")).createDisplay();
+        new Display("displayMediumPriorities", todoManager.getTodoByPriority("Medium")).createDisplay();
         setCurrentProjectName("Medium Priority");
     });
 
     lowPriority.addEventListener("click", () => {
-        new Display("displayLowPriorities", todoManager.getTodoByPriority("low")).createDisplay();
+        new Display("displayLowPriorities", todoManager.getTodoByPriority("Low")).createDisplay();
         setCurrentProjectName("Low Priority");
     });
 };
