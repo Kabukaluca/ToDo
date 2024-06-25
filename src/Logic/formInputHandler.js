@@ -46,8 +46,10 @@ const checkProjectInputValidity = () => {
         const error = document.getElementById("project-error");
         error.textContent = "Just casual stuff, eh?";
     } else {
-        new Project(projectName).createNewProject();
+        const project = new Project(projectName);
+        project.createNewProject();
         updateProjectList(projectName);
+        
         closeNewProjectForm();
     }
 };
