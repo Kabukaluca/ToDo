@@ -227,6 +227,8 @@ class Display {
             <div class="item-row"> <strong>Due:</strong> <br> - ${todo.dueDate} </div>
                 
             <div class="item-row"> <strong>Priority:</strong> <br> - ${todo.priority} </div>
+
+            <div class="item-row"> <strong>Project:</strong> <br> - ${todo.project} </div>
                 
             <div class="item-row"> <strong>Status:</strong> <br> - ${todo.status} </div>
             `;
@@ -374,7 +376,7 @@ class Project {
     }
 
     getProjectId() {
-       let projectId = "project-folder-" + this.projectName.toLowerCase();
+       let projectId = "project-folder-" + this.projectName.toLowerCase().replace(/\s+/g, '-');
         return projectId;
     }
 
