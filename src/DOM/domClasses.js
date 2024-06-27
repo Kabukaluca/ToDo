@@ -385,11 +385,6 @@ class Project {
 
         let sidebar = document.getElementById("sidebar");
 
-        if(!sidebar) { // debug Log
-            console.log("error: Sidebar Element not found");
-            return;
-        }
-
         this.newProjectFolder = document.createElement("div");
         this.newProjectFolder.classList.add("project-folder");
         this.newProjectFolder.setAttribute("id", this.getProjectId());
@@ -400,12 +395,11 @@ class Project {
         this.addEventListener();
     }
 
-    // work on filter by Project functionality
     addEventListener() {
         if (this.newProjectFolder) {
             this.newProjectFolder.addEventListener("click", () => {
                 console.log("Creating newProjectFolder-Display...");
-                new Display(`${this.projectName}`, todoManager.getTodoByProject(this.getProjectId())).createDisplay();
+                new Display(`${this.projectName}`, todoManager.getTodoByProject(this.projectName)).createDisplay();
                 console.log("New Project-Display has been created.");
             });
         } else {
