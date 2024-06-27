@@ -21,6 +21,7 @@ const checkTodoInputValidity = () => {
         let todoDescription = document.getElementById("Description").value;
         let todoDue = document.getElementById("Due").value;
         let todoPriority = document.getElementById("Priority").value;
+        let todoProject = document.getElementById("todo-form-project-select").value
         // let todoStatus = document.getElementById("Complete").checked;
 
         if (todoName === "") {
@@ -32,7 +33,7 @@ const checkTodoInputValidity = () => {
             error.textContent = "No deadline, eh?";
             return
         } else {
-            createTodo(todoName, todoDescription, todoDue, todoPriority, /* todoStatus */);
+            createTodo(todoName, todoDescription, todoDue, todoPriority, todoProject, /* todoStatus */);
             console.log(todoManager.todoList);
             new Display("displayAll", todoManager.todoList).createDisplay();
             closeNewTodoForm();
