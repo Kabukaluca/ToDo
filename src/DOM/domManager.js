@@ -2,8 +2,6 @@ import todoManager from "../Logic/todoManager";
 import { Display, TodoFolder } from "./domClasses";
 import { displayNewTodoForm, closeNewTodoForm, displayNewProjectForm, closeNewProjectForm } from "../DOM/formModals.js";
 import { checkTodoInputValidity, checkProjectInputValidity } from "../Logic/formInputHandler";
-import { initialProjects } from "../DOM/formModals.js";
-import { Project } from "./domClasses";
 
 // === EventListener === //
 function eventListenersSidebar() {
