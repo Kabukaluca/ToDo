@@ -41,7 +41,14 @@ const checkTodoInputValidity = () => {
 }; 
 
 const checkProjectInputValidity = () => {
-    let projectName = document.getElementById("project").value;
+    let projectInput = document.getElementById("project");
+    
+    if(!projectInput) {
+        console.log("Project input element not found");
+        return;
+    }
+
+    let projectName = projectInput.value;
     
     if (projectName === "") {
         const error = document.getElementById("project-error");

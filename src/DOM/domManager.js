@@ -85,7 +85,23 @@ function eventListenersTodoModal() {
         closeNewTodoForm();
         };
     });
+
+    document.addEventListener("keydown", handelKeydownTodoModal);
 };
+    function handelKeydownTodoModal(event) {
+        let todoFormModal = document.getElementById("todo-form-modal");
+
+        if (todoFormModal.style.display = "block") {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkTodoInputValidity();
+            } else if (event.key === "Escape") {
+                closeNewTodoForm();
+            } else {
+                return
+            };
+        };
+    };
 
 function eventListenersProjectModal() {
     let projectFormSubmitBtn = document.getElementById("new-project-form-submit-btn");
@@ -100,7 +116,24 @@ function eventListenersProjectModal() {
         closeNewProjectForm();
         };
     }); 
+
+    document.addEventListener("keydown", handelKeydownProjectModal);
 };
+    function handelKeydownProjectModal(event) {
+        let projectFormModal = document.getElementById("new-project-modal");
+    
+        if (projectFormModal && projectFormModal.style.display === "block") {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkProjectInputValidity();
+                
+            } else if (event.key === "Escape") {
+                closeNewProjectForm();
+            } else {
+                return
+            }
+        };
+    };
 
 function setCurrentProjectName(name) {
     let currentProjectName = document.getElementById("current-folder-name");
