@@ -10,9 +10,9 @@ const newTodoForm = document.createElement("form");
     newTodoForm.setAttribute("id", "new-todo-form");
     newTodoForm.classList.add("form");
 
-const todoFormNameInput = new FormRowInput("Todo:", "text", "Todo", "Todo", "true", "todo-error", "Nothing todo ?");
+const todoFormNameInput = new FormRowInput("Todo:", "text", "Todo", "Todo", "true", "todo-error", "Please provide a name");
 const todoFormDescriptionInput = new FormRowTextarea("Description:", "Description", "About xy..", "errorId");
-const todoFormDueDateInput = new FormRowInput("Due:", "date", "Due", "01.10.2030", "true", "due-error");
+const todoFormDueDateInput = new FormRowInput("Due:", "date", "Due", "01.10.2030", "true", "due-error", "Please set a deadline");
 const todoFormPriorityInput = new FormRowSelect("Priority:", "Priority", "required", "How important is this task ?", [{value: "High"}, {value: "Medium"}, {value: "Low"}]);
 // const todoFormStatusInput = new FormRowInput("Complete:", "checkbox", "Complete", "Complete",);
 const todoFormProjectInput = new FormRowSelect("Project", "todo-form-project-select", "false", "", initialProjects);
@@ -54,7 +54,7 @@ const newProjectModal = document.createElement("div");
 const newProjectForm = document.createElement("form");
     newProjectForm.setAttribute("id", "new-project-form");
     newProjectForm.classList.add("form");
-    const projectFormNameInput = new FormRowInput("Project:", "text", "project", "Project", "true", "project-error", "");
+    const projectFormNameInput = new FormRowInput("Project:", "text", "project", "Project", "true", "project-error", "Please provide a name");
     
 const submitProjectForm = document.createElement("input");
     submitProjectForm.setAttribute("type", "button");
