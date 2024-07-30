@@ -381,8 +381,6 @@ class Project {
     }
 
     createNewProject() {
-        console.log("Creating new project..."); // debug log
-
         let sidebar = document.getElementById("sidebar");
 
         this.newProjectFolder = document.createElement("div");
@@ -391,21 +389,17 @@ class Project {
         this.newProjectFolder.textContent = this.projectName;
     
         sidebar.appendChild(this.newProjectFolder);
-        console.log("New project folder added"); // Debug log
         this.addEventListener();
     }
 
-    addEventListener() {
+    async addEventListener() {
         if (this.newProjectFolder) {
-            this.newProjectFolder.addEventListener("click", () => {
-                console.log("Creating newProjectFolder-Display...");
-                new Display(`${this.projectName}`, todoManager.getTodoByProject(this.projectName)).createDisplay();
-                console.log("New Project-Display has been created.");
-            });
+            const { addProjectEventListener }  = await import("./domManager.js");
+            addProjectEventListener(this.projectName, this.newProjectFolder, new Display(`${this.projectName}`, todoManager.getTodoByProject(this.projectName)));
         } else {
-            console.log("No project folder created to add event listener to.");
+            console.log("No project folder created to add Event listener to.");
         };
-    }
-}
+    };
+};        
 
 export { FormRowInput, FormRowSelect, FormRowTextarea, Button, TodoFolder, Display, Project };
