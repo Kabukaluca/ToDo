@@ -18,7 +18,7 @@ const footer = document.getElementById("footer");
     const currentFolderName = document.createElement("div");
         currentFolderName.classList.add("header-elements");
         currentFolderName.setAttribute("id", "current-folder-name");
-        currentFolderName.textContent = "All Todo's";
+        currentFolderName.textContent = "All Todo's"; // set initial folderName
 
     // -- New Todo -- //
     const newTodoBtn = new Button("＋new Todo", "header-elements", "new-todo-btn");
