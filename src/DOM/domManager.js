@@ -135,9 +135,15 @@ function eventListenersProjectModal() {
         };
     };
 
-function setCurrentProjectName(name) {
+export function setCurrentProjectName(name) {
     let currentProjectName = document.getElementById("current-folder-name");
     currentProjectName.textContent = name;
 };
     
+export function addProjectEventListener(projectName, projectFolder, display) {
+    projectFolder.addEventListener("click", () => {
+        setCurrentProjectName(projectName);
+        display.createDisplay();
+    })
+}
 export { eventListenersSidebar, eventListenersPriorities };
