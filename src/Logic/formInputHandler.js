@@ -10,10 +10,7 @@ const initialProjects = [
 ];
 
 const updateProjectList = (newProject) => {
-        console.log(`pushing ${newProject}`)
         initialProjects.push({ value: newProject });
-        console.log(`${newProject} has been pushed`);
-
 };
 
 const checkTodoInputValidity = () => {
