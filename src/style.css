@@ -14,8 +14,10 @@
     height: 100vh;
 }
 
-/* === Header Styles === */
-#header {
+/* === Header Styles === */ 
+ /* Deactivated due to restructureing
+ 
+ #header {
     grid-area: header;
     display: flex;
     flex-direction: row;
@@ -24,6 +26,15 @@
     gap: 1rem;
     background-color: rgba(40, 40, 40);
     height: 125px;
+} */
+
+#header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 120px;
+    background-color: rgba(40, 40, 40);
 }
 
 .header-elements {
@@ -58,6 +69,15 @@
     flex-direction: column;
     justify-content: flex-start;
     gap: 0.1rem;
+}
+
+#app-logo {
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid red;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bold;
 }
 
 .todo-folder,

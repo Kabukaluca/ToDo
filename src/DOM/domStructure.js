@@ -3,16 +3,14 @@ import { Button, TodoFolder } from "./domClasses";
 //# === website Structure / Layout === //
 const header = document.getElementById("header");
 const content = document.getElementById("content");
+    // const sidebar = document.createElement("div");
 const footer = document.getElementById("footer");
 
 
 // ## === Header === ## //
 
-    // -- App Name -- //
-    const headerLogo = document.createElement("div");
-        headerLogo.classList.add("header-elements");
-        headerLogo.setAttribute("id", "header-logo");
-        headerLogo.textContent = "TaskTango"; // set name for Website in header
+const headerElement = document.createElement("div");
+    headerElement.setAttribute("id", "header-content");
 
     // -- Current Folder Name -- //
     const currentFolderName = document.createElement("div");
@@ -24,17 +22,23 @@ const footer = document.getElementById("footer");
     const newTodoBtn = new Button("＋new Todo", "header-elements", "new-todo-btn");
     
     // == Append Elements == //
-    header.appendChild(headerLogo);
-    header.appendChild(currentFolderName);
-    header.appendChild(newTodoBtn.createBtn());
+    //headerElement.appendChild(headerLogo);
+    headerElement.appendChild(currentFolderName);
+    headerElement.appendChild(newTodoBtn.createBtn());
 
 
 // ## === Content === ## //
     //# --- Sidebar --- #//
-    const sidebar = document.createElement("div");
+        const sidebar = document.createElement("div");
         sidebar.classList.add("sidebar");
         sidebar.setAttribute("id", "sidebar");
         
+    // -- App Name -- //
+        const appLogo = document.createElement("div");
+        // appLogo.classList.add("header-elements");
+        appLogo.setAttribute("id", "app-logo");
+        appLogo.textContent = "TaskTango"; // set name for Website in header
+
         // -- Todo Folder -- //
         const allTodo = new TodoFolder("All", "todo-folder", "todo-folder-all");
         const priorities = new TodoFolder("Priorities", "todo-folder", "todo-folder-priorities");
@@ -54,6 +58,7 @@ const footer = document.getElementById("footer");
 
     // == Append Elements == //
     const displayContent = () => {
+        sidebar.appendChild(appLogo);
         sidebar.appendChild(allTodo.createFolder());
         sidebar.appendChild(priorities.createFolder());
         sidebar.appendChild(completed.createFolder());
@@ -61,7 +66,8 @@ const footer = document.getElementById("footer");
         mainContent.appendChild(todoListContainer);
 
         content.appendChild(sidebar);
-        content.appendChild(mainContent);
+        content.appendChild(mainContent)
+        content.appendChild(headerElement);
     };
 
 export { displayContent };
